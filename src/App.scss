@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:100,900');
+@import '../node_modules/include-media/dist/_include-media.scss';
+
+$media-expressions: (
+    'landscape': '(orientation: landscape)',
+    'portrait': '(orientation: portrait)',
+  ) !default;
+
+html,
+body,
+#root,
+.pingbot {
+    background: #222;
+    font-family: 'Heebo', sans-serif;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+}
+.pingbot {
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+    border: 15px solid #111;
+}
+.pingbot_scores {
+    display: flex;
+    height: 100%;
+    
+    @include media('landscape') {
+        flex-direction: row;
+    }
+    @include media('portrait') {
+        flex-direction: column;
+    }
+}
+.pingbot_blueScore,
+.pingbot_redScore {
+    align-items: center;
+    background: #222;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    font-size: 400px;
+    font-weight: bold;
+    height: 100%;
+    justify-content: center;
+    max-width: 50%;
+    outline: none;
+    overflow: hidden;
+    text-align: center;
+    user-select: none;
+    width: 100%;
+    transition: background 0.5s ease-in-out;
+
+    &:active {
+        background: #111;
+        transition: background 0.2s ease-in-out;
+    }
+    @include media('portrait') {
+        max-width: 100%;
+    }
+
+    @include media("<=1024px") {
+        font-size: 225px;
+    }
+}
+.pingbot_blueScore {
+    font-family: 'Heebo', sans-serif;
+    color: rgb(3, 175, 255);
+}
+.pingbot_redScore {
+    font-family: 'Heebo', sans-serif;
+    color: rgb(255, 42, 4);
+}
+.pingbot_resetScore {
+    background: #111;
+    border-radius: 3px;
+    bottom: 0px;
+    color: #FFF;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 100;
+    left: 50%;
+    letter-spacing: 0.5px;
+    margin-left: -100px;
+    padding: 7.5px 0;
+    position: absolute;
+    text-transform: uppercase;
+    width: 200px;
+
+    @include media('portrait') {
+        bottom: 0;
+        left: auto;
+        right: 0;
+        width: 150px;
+    }
+}
+.pingbot_servingRed,
+.pingbot_servingBlue {
+    background: #111;
+    bottom: 0px;
+    color: #FFF;
+    cursor: pointer;
+    padding: 7.5px 15px;
+    position: absolute;
+    text-transform: uppercase;
+}
+.pingbot_servingRed {
+    left: 0;
+
+    @include media('portrait') {
+        bottom: auto;
+        top: 0;
+    }
+}
+.pingbot_servingBlue {
+    right: 0;
+
+    @include media('portrait') {
+        right: auto;
+        left: 0;
+        bottom: 0;
+    }
+}
